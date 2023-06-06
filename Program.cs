@@ -7,6 +7,22 @@ internal class Program
 {
     private static void Main(string[] args)
     {
+        Console.WriteLine("How do you wanna be crashed today?");
+        Console.WriteLine("1. Crash with a formattable string");
+        Console.WriteLine("2. Crash with an infinite recursion");
+
+        var key = Console.ReadKey();
+
+        switch (key.KeyChar)
+        {
+            case '2':
+                CrashWithInfiniteRecursion();
+                break;
+            case '1':
+            default:
+                CrashWithFormattableString();
+                break;
+        }
 
         CrashWithFormattableString();
 
