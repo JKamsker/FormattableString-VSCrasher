@@ -7,6 +7,17 @@ internal class Program
 {
     private static void Main(string[] args)
     {
+
+        CrashWithFormattableString();
+
+        // Bonus
+        CrashWithInfiniteRecursion();
+    }
+
+
+
+    private static void CrashWithFormattableString()
+    {
         var defCrash = FormattableStringFactory.Create("{1} yolo", "haha");
 
 
@@ -23,7 +34,28 @@ internal class Program
         Debugger.Break();
         Console.WriteLine("This will never been called");
     }
+
+    /// <summary>
+    /// Bonus time :)
+    /// </summary>
+    private static void CrashWithInfiniteRecursion()
+    {
+        var infinite = new InfiniteCrash();
+        Debugger.Break();
+        Console.WriteLine("This will never been called");
+    }
 }
+
+public class InfiniteCrash
+{
+    public string Infinite => this.Infinite;
+
+    public override string ToString()
+    {
+        return Infinite;
+    }
+}
+
 
 internal static class FormattableStringHelper
 {
